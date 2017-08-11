@@ -1,0 +1,32 @@
+<h3>Hi, {{username}}</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+     <a routerLink='/question'>Add a question</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 text-right">
+    Search:<input type="text" [(ngModel)]='filter.questiontitle' placeholder='Search'>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Answers</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let q of questions | search:filter'>
+      <td>{{q.questiontitle}}</td>
+      <td>{{q.answers.length}}</td>
+      <td>
+        <button  [routerLink]="['/question', q._id]" class="btn btn-danger btn-sm">Show</button>
+        <button [routerLink]="['/answer', q._id]" class="btn btn-danger btn-sm">Answer</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

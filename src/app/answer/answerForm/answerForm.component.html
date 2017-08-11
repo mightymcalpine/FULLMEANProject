@@ -1,0 +1,27 @@
+<a routerLink='/question/{{question._id}}'>Go Back to Question</a>
+<fieldset>
+  <form (submit)='onSubmit(newAnswer)' #newAnswer='ngForm'>
+    <div class="form-group">
+      <h3>{{question.questiontitle}}</h3>
+      <h4>{{question.desc}}</h4>
+    </div>
+    <div class="form-group">
+      <label for="answer">Your Answer:</label>
+      <input id='answertitle' type="text" class="form-control" name='answertitle' [(ngModel)]='answer.answertitle' #answertitle='ngModel' minlength='5' required>
+
+      <div *ngIf='(answertitle.touched || answertitle.dirty) && answertitle.errors'>
+        <div *ngIf='answertitle.errors.required' class='alert alert-danger'>Your answer</div>
+        <div *ngIf='answertitle.errors.minlength' class='alert alert-danger'>Answer must be at least {{answertitle.errors.minlength.requiredLength}} characters in length.  You only have {{answertitle.errors.minlength.actualLength}}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sdetails">Supporting details for your answer(Optional):</label>
+      <input id='sdetails' type="text" name='sdetails' [(ngModel)]='answer.sdetails' #sdetails='ngModel' class="form-control">
+    </div>
+  <div>
+    <button [disabled]='newAnswer.invalid' [hidden]='newAnswer.invalid' class="btn btn-md btn-success">Submit</button>
+    <button routerLink='/home' (click)='this.answer = null' class='btn btn-md  btn-success'>Cancel</button>
+  </div>
+  </form>
+</fieldset>

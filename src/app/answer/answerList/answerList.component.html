@@ -1,0 +1,23 @@
+<a routerLink='/answer/{{question._id}}'>Answer this Question</a>
+<h3>{{question.questiontitle}}</h3>
+<h4>{{question.desc}}</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Answers</th>
+      <th>Likes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let a of question.answers'>
+      <td>
+          {{a.user.username}}:<br />{{a.answertitle}}<br />{{a.sdetails}}
+      </td>
+      <td>{{a.like||0}}</td>
+      <td>
+        <button  (click)='updateLikes(a._id)' class="btn btn-danger btn-sm">Like</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

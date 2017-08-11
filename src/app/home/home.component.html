@@ -1,0 +1,17 @@
+<div *ngIf='registrationErrors.length'>
+  <ul class="alert alert-danger">
+    <li *ngFor='let error of registrationErrors'>
+      Eror:{{error}}
+    </li>
+  </ul>
+</div>
+  <fieldset>
+    <form (submit)='onSubmit(login.value)' #login='ngForm' class='form-group'>
+      <div class="form-control">
+        <label for="">Name:</label>
+        <input type="text" name='username' #name='ngModel' [ngModel]='user.username' minlength='3' required >
+      </div>
+      <button *ngIf='login.valid'>Enter</button>
+    </form>
+  </fieldset>
+

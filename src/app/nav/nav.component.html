@@ -1,0 +1,11 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Q&A</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li *ngIf="isAuthed()"><a routerLink='/home' routerLinkActive="active">Home</a></li>
+      <li *ngIf="isAuthed()"><a (click)="logout($event)">Logout</a></li>
+    </ul>
+  </div>
+</nav>
